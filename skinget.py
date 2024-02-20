@@ -22,4 +22,4 @@ async def skinget(ctx, username: str):
                 await ctx.respond("Sorry, I couldn't find that skin.")
 
 # Run the bot
-bot.run('MTIwOTUyNjY1Nzg3NTE4NTY4NA.GDu_xg.1t9W3Mccurzpggfsc9weoAM_ouIM9XR3ohnr5w')
+bot.run('TOKEN')

@@ -11,13 +11,14 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 @bot.slash_command(name='skin', description='Get a Minecraft users skin')
 async def skinget(ctx, username: str):
     skin_url = f"https://minotar.net/skin/{username}.png"
+    download_url = f"https://minotar.net/download/{username}.png"
 
     async with aiohttp.ClientSession() as session:
         async with session.get(skin_url) as resp:
             if resp.status == 200:
                 data = io.BytesIO(await resp.read())
                 file = discord.File(data, filename=f"{username}_skin.png")
-                await ctx.respond(f"Here is the skin for {username} (Download)[{f"https://minotar.net/download/{username}.png"}]:", file=file)
+                await ctx.respond(f"Here is the skin for {username} (Download)[{download_url}]:", file=file)
             else:
                 await ctx.respond("Sorry, I couldn't find that skin.")
 

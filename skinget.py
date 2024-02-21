@@ -17,7 +17,7 @@ async def skinget(ctx, username: str):
             if resp.status == 200:
                 data = io.BytesIO(await resp.read())
                 file = discord.File(data, filename=f"{username}_skin.png")
-                await ctx.respond(f"Here is the skin for {username}:", file=file)
+                await ctx.respond(f"Here is the skin for {username} (Download)[{f"https://minotar.net/download/{username}.png"}]:", file=file)
             else:
                 await ctx.respond("Sorry, I couldn't find that skin.")
 

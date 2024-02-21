@@ -7,7 +7,7 @@ import io
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="/", intents=intents)
 
-# Register the /skinget command
+# Register the /skin command
 @bot.slash_command(name='skin', description='Get a Minecraft users skin')
 async def skinget(ctx, username: str):
     skin_url = f"https://minotar.net/skin/{username}.png"

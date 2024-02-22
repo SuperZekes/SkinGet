@@ -4,11 +4,48 @@ import aiohttp
 import io
 import requests
 import random
+from itertools import islice
+import urllib
 
 poses = ["default"]
 # Initialize the bot
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="/", intents=intents)
+
+skin_creator_options = requests.get(
+    "https://starlightskins.lunareclipse.studio/create-skin/info"
+).json()
+colors = [
+    "red",
+    "crimson",
+    "orange",
+    "tan",
+    "gold",
+    "yellow",
+    "green",
+    "lime",
+    "blue",
+    "light_blue",
+    "sky_blue",
+    "purple",
+    "magenta",
+    "pink",
+    "brown",
+    "black",
+    "gray",
+    "light_gray",
+    "white",
+]
+base_colors = [
+    "pale",
+    "tan",
+    "tan_medium",
+    "tan_dark",
+    "medium",
+    "medium_dark",
+    "dark",
+    "dark_darker",
+]
 
 
 # Register the /skin command

@@ -4,6 +4,9 @@ import aiohttp
 import io
 import json
 import requests
+import random
+
+poses = ["default", "marching", "walking", "crouching", "crossed", "criss_cross", "cheering", "relaxing", "trudging", "cowering", "pointing", "lunging", "dungeons", "facepalm", "sleeping", "archer", "kicking"]
 
 # Initialize the bot
 intents = discord.Intents.default()
@@ -12,12 +15,8 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 # Register the /skin command
 @bot.slash_command(name='skin', description='Get a Minecraft users skin')
 async def skinget(ctx, username: str):
-    try:
-        uuidrequest = requests.get(f"https://api.mojang.com/users/profiles/minecraft/{username}")
-        uuid = json.loads(uuidrequest.content)["id"]
-    except KeyError:
-        await ctx.respond("Sorry, I couldn't find that skin.")
-    render_url = f"https://api.mineatar.io/body/full/{uuid}"
+    
+    render_url = f"https://starlightskins.lunareclipse.studio/skin-render/{random.choice(poses)}/{username}/full"
     download_url = f"https://minotar.net/download/{username}.png"
 
     async with aiohttp.ClientSession() as session:

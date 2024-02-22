@@ -4,68 +4,8 @@ import aiohttp
 import io
 import requests
 import random
-import typing
-from itertools import islice
-import urllib
 
-skin_creator_options = requests.get(
-    "https://starlightskins.lunareclipse.studio/create-skin/info"
-).json()
-poses = [
-    "default",
-    "marching",
-    "walking",
-    "crouching",
-    "crossed",
-    "criss_cross",
-    "cheering",
-    "relaxing",
-    "trudging",
-    "cowering",
-    "pointing",
-    "lunging",
-    "dungeons",
-    "facepalm",
-    "sleeping",
-    "archer",
-    "kicking",
-]
-colors = [
-    "red",
-    "crimson",
-    "orange",
-    "tan",
-    "gold",
-    "yellow",
-    "green",
-    "lime",
-    "blue",
-    "light_blue",
-    "sky_blue",
-    "purple",
-    "magenta",
-    "pink",
-    "brown",
-    "black",
-    "gray",
-    "light_gray",
-    "white",
-]
-print(len(colors))
-base_colors = [
-    "pale",
-    "tan",
-    "tan_medium",
-    "tan_dark",
-    "medium",
-    "medium_dark",
-    "dark",
-    "dark_darker",
-]
-
-
-print(skin_creator_options)
-
+poses = ["default"]
 # Initialize the bot
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="/", intents=intents)
@@ -92,8 +32,8 @@ async def skinget(ctx, username: str):
             else:
                 await ctx.respond("Sorry, I couldn't find that skin.")
 
-
-@bot.slash_command(name="ping", description="Sends the bot's latency.")
+# Register the /ping command
+@bot.slash_command(name='ping', description="Sends the bot's latency.")
 async def ping(ctx):
     await ctx.respond(f"Pong! Latency is {bot.latency}")
 

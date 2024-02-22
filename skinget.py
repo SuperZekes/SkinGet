@@ -31,6 +31,10 @@ async def skinget(ctx, username: str):
             else:
                 await ctx.respond("Sorry, I couldn't find that skin.")
 
+@bot.slash_command(name='ping', description="Sends the bot's latency.")
+async def ping(ctx):
+    await ctx.respond(f"Pong! Latency is {bot.latency}")
+
 # Run the bot
 with open("token.txt") as tokenfile:
     bot.run(tokenfile.read())

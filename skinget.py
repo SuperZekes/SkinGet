@@ -6,8 +6,7 @@ import json
 import requests
 import random
 
-poses = ["default", "marching", "walking", "crouching", "crossed", "criss_cross", "cheering", "relaxing", "trudging", "cowering", "pointing", "lunging", "dungeons", "facepalm", "sleeping", "archer", "kicking"]
-
+poses = ["default"]
 # Initialize the bot
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="/", intents=intents)
@@ -30,6 +29,7 @@ async def skinget(ctx, username: str):
             else:
                 await ctx.respond("Sorry, I couldn't find that skin.")
 
+# Register the /ping command
 @bot.slash_command(name='ping', description="Sends the bot's latency.")
 async def ping(ctx):
     await ctx.respond(f"Pong! Latency is {bot.latency}")
